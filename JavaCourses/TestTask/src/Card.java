@@ -1,10 +1,12 @@
-public class Card{
-    private void ChekIsAvailable(){
-        if(System.currentTimeMillis()>time){
-            isCardAvailable = true;}
-        else{
-            isCardAvailable = false;}
+public class Card {
+    private void ChekIsAvailable() {
+        if (System.currentTimeMillis() > time) {
+            isCardAvailable = true;
+        } else {
+            isCardAvailable = false;
+        }
     }
+
     private final long DAYINMILL = 86400000;
     private String cardNuber;
     private int pinCode;
@@ -12,23 +14,25 @@ public class Card{
     private long time;
     private boolean isCardAvailable;
 
-    public boolean isAvailable(){
+    public boolean isAvailable() {
         return isCardAvailable;
     }
 
-    public void blockCard(){
+    public void blockCard() {
         isCardAvailable = false;
-        time = System.currentTimeMillis()+DAYINMILL;
+        time = System.currentTimeMillis() + DAYINMILL;
     }
-    public Card(String cardNuber, int pinCode, int balance, long time){
+
+    public Card(String cardNuber, int pinCode, int balance, long time) {
         this.cardNuber = cardNuber;
         this.pinCode = pinCode;
         this.balance = balance;
         this.time = time;
         ChekIsAvailable();
     }
-    public Card(){
-        this.cardNuber = "";
+
+    public Card() {
+        this.cardNuber = null;
         this.pinCode = 0;
         this.balance = 0;
         this.time = 0;
