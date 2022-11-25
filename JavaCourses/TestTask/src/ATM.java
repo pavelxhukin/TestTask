@@ -82,14 +82,19 @@ public class ATM {
             String inputCardNumber = inputCardScanner.nextLine();
 
             myCard = cardList.findCard(inputCardNumber);
+            if (!myCard.isAvailable()){
+                Date unblockDate = new Date(myCard.getTime());
+                System.out.printf("Ваша карта заблокированна до " + unblockDate + "\n");
+                continue;
+            }
 
             if (myCard.getCardNuber() == null) {
                 System.out.println("Карта не найдена либо введена неверно");
                 continue;
             } else {
-                if (myCard.isAvailable()) {//интерфейс
+                chekPinCode(pinInputCounter, myCard);
 
-                    chekPinCode(pinInputCounter, myCard);
+                if (myCard.isAvailable()) {//интерфейс
 
                     cashWithdrawal(myCard);
 
